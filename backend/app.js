@@ -1,11 +1,13 @@
 const express = require("express");
 const errorHandler = require("./middleware/syncErrorHandler");
 const ErrorHandler = require("./utils/errorHandler");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
 //global middleware
 app.use(express.json());
+app.use(cookieParser());
 
 //router import
 const product = require("./routes/productsRoute");
