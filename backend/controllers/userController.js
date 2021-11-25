@@ -3,6 +3,7 @@ const ErrorHandler = require("../utils/errorHandler");
 const asyncErrorHandler = require("../middleware/asyncErrorHandler");
 const AppFeature = require("../utils/appFeatures");
 const sendToken = require("../utils/getJwtToken");
+const sendEmail = require("../utils/sendEmail");
 
 //register user
 exports.registerUser = asyncErrorHandler(async (req, res, next) => {
@@ -26,9 +27,11 @@ exports.logInUser = asyncErrorHandler(async (req, res, next) => {
   }
   const user = await User.findOne({ email }).select("+password");
 
+  //validate email
   if (!user) {
     return next(new ErrorHandler("Invalid email or password", 401));
   }
+  //validate password
   const isPasswordMatched = user.comparePassword(password);
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid email or password", 401));
@@ -37,8 +40,46 @@ exports.logInUser = asyncErrorHandler(async (req, res, next) => {
 });
 
 //logout
-exports.logOut = asyncErrorHandler(async (req, res, next) => {
-  res.cookie("token", null, { expires: new Date(Date.now()), httpOnly: true });
+exports.logOut = asyncErrorHandler((req, res, next) => {
+  res
+    .status(200)
+    .cookie("token", null, { expires: new Date(Date.now()), httpOnly: true })
+    .json({ success: true, message: "logged out successfully!" });
+});
 
-  res.status(200).json({ success: true, message: "logged out successfully!" });
+//Forgot Password
+exports.forgotPassword = asyncErrorHandler(async (req, res, next) => {
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  //get resetPasswordToken
+  const resetToken = user.getResetPasswordToken();
+
+  await user.save({ validateBeforeSave: false });
+
+  //sending password reset email
+  const resetPasswordUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/password/reset/${resetToken}`;
+  const message = `Your password rest token is:\n\n${resetPasswordUrl}\n\nIf you havn't requested for it, please ignore it`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: `Password recovery`,
+      message,
+    });
+    res.status(200).json({
+      success: true,
+      message: `Email sent to ${user.email} successfully`,
+    });
+  } catch (error) {
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    await user.save({});
+    await user.save({ validateBeforeSave: false });
+    return next(new ErrorHandler(error.message, 500));
+  }
 });

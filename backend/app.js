@@ -1,5 +1,5 @@
 const express = require("express");
-const errorHandler = require("./middleware/syncErrorHandler");
+const syncErrorHandler = require("./middleware/syncErrorHandler");
 const ErrorHandler = require("./utils/errorHandler");
 const cookieParser = require("cookie-parser");
 
@@ -22,6 +22,6 @@ app.use((req, res, next) => {
 });
 
 //errorHandling middleware
-app.use(errorHandler);
+app.use(syncErrorHandler);
 
 module.exports = { app };

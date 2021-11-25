@@ -11,8 +11,10 @@ exports.checkLogin = asyncErrorHandler(async (req, res, next) => {
   }
 
   const decodedData = jwt.verify(token, process.env.JWT_SECRET_KEY);
+  //   console.log(decodedData);
   req.user = await User.findById(decodedData.id);
-  console.log(req.user);
+  //   console.log(req.user);
+  //   console.log(req.user._id);
   next();
 });
 
@@ -22,7 +24,7 @@ exports.checkAuthorizeRole = (...roles) => {
     if (!roles.includes(req.user.role)) {
       return next(
         new ErrorHandler(
-          `Role: ${req.user.role} is not allowed to access this resource`
+          `Role: General ${req.user.role} is not allowed to access this resource except the admin.`
         )
       );
     }

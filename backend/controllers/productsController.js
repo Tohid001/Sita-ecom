@@ -5,7 +5,7 @@ const AppFeature = require("../utils/appFeatures");
 
 //create product -- Admin
 createProduct = asyncErrorHandler(async (req, res, next) => {
-  req.body.user = req.user.id;
+  req.body.user = req.user.id; // to identify which admin created the product
   const product = await Product.create(req.body);
   res.status(201).json({ message: "success!", product });
 });
