@@ -5,6 +5,7 @@ const {
   updateProduct,
   deleteProduct,
   getProductDetails,
+  createProductReview,
 } = require("../controllers/productsController");
 const { checkLogin, checkAuthorizeRole } = require("../middleware/checkLogin");
 
@@ -23,6 +24,7 @@ router
   .delete(checkLogin, checkAuthorizeRole("admin"), deleteProduct);
 
 router.route("/product/:id").get(getProductDetails);
+router.route("/review").put(checkLogin, createProductReview);
 
 // router.route("/test").get((req, res, next) => {
 //   console.log("i am product");

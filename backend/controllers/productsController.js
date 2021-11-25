@@ -62,10 +62,47 @@ deleteProduct = async (req, res, next) => {
     .json({ success: true, result: "product was deleted successfully" });
 };
 
+//creating or updating review
+createProductReview = asyncErrorHandler(async (req, res, next) => {
+  console.log("rev");
+  const { rating, comment, productId } = req.body;
+  const { _id: user, name } = req.user;
+  const review = { user, name, rating, comment };
+  const product = await Product.findById(productId);
+  const isReviewed = product.reviews.find((rev) => {
+    console.log(rev.user.toString(), user);
+    return rev.user.toString() == user;
+  });
+
+  if (isReviewed) {
+    product.reviews.forEach((rev) => {
+      if (rev.user.toString() == user) {
+        rev.rating = rating;
+        rev.comment = comment;
+      }
+    });
+  } else {
+    product.reviews.push(review);
+  }
+  product.numOfReviews = product.reviews.length;
+  let avg = 0;
+
+  product.reviews.forEach((rev) => {
+    avg += rev.rating;
+  });
+
+  product.ratings = avg / product.reviews.length;
+
+  await product.save({ validateBeforeSave: false });
+
+  res.status(200).json({ success: true });
+});
+
 module.exports = {
   createProduct,
   getProducts,
   updateProduct,
   deleteProduct,
   getProductDetails,
+  createProductReview,
 };
