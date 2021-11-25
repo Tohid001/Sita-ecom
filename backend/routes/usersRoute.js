@@ -11,6 +11,8 @@ const {
   updateProfile,
   getUserDetailsByAdmin,
   getAllUserDetailsByAdmin,
+  updateUserRole,
+  deleteUser,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -23,12 +25,15 @@ router.route("/logout").get(logOut);
 router.route("/me").get(checkLogin, getUserDetails);
 router.route("/password/update").put(checkLogin, updatePassword);
 router.route("/me/update").put(checkLogin, updateProfile);
-router
-  .route("/admin/user/:id")
-  .get(checkLogin, checkAuthorizeRole("admin"), getUserDetailsByAdmin);
+
 router
   .route("/admin/user")
   .get(checkLogin, checkAuthorizeRole("admin"), getAllUserDetailsByAdmin);
+router
+  .route("/admin/user/:id")
+  .get(checkLogin, checkAuthorizeRole("admin"), getUserDetailsByAdmin)
+  .put(checkLogin, checkAuthorizeRole("admin"), updateUserRole)
+  .delete(checkLogin, checkAuthorizeRole("admin"), deleteUser);
 
 // router.route("/test").get((req, res, next) => {
 //   console.log("i am user");

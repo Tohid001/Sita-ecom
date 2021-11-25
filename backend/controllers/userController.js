@@ -179,3 +179,33 @@ exports.getAllUserDetailsByAdmin = asyncErrorHandler(async (req, res, next) => {
 
   res.status(200).json({ success: true, users });
 });
+
+//update user role--admin
+exports.updateUserRole = asyncErrorHandler(async (req, res, next) => {
+  console.log("i am update");
+  const { name, email, role } = req.body;
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { name, email, role },
+    { new: true, runValidators: true, useFindAndModify: false }
+  );
+  if (!user) {
+    return next(new Error(`User does not exist with id: ${req.params.id}`));
+  }
+
+  res
+    .status(200)
+    .json({ success: true, messsage: "role updated successfully", user });
+});
+
+//delete user--admin
+exports.deleteUser = asyncErrorHandler(async (req, res, next) => {
+  const user = await User.findByIdAndRemove(req.params.id);
+  if (!user) {
+    return next(new Error(`User does not exist with id: ${req.params.id}`));
+  }
+  //   await user.remove();
+  res
+    .status(200)
+    .json({ success: true, messsage: "user deleted successfully" });
+});
