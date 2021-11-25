@@ -23,4 +23,13 @@ router
   .delete(checkLogin, checkAuthorizeRole("admin"), deleteProduct)
   .get(getProductDetails);
 
+// router.route("/test").get((req, res, next) => {
+//   console.log("i am product");
+//   res.json({});
+//   next();
+// });
+// router.route("/test").get((req, res, next) => {
+//   console.log("i am product 2");
+// });
+
 module.exports = router;

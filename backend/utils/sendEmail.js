@@ -1,5 +1,4 @@
 const nodeMailer = require("nodemailer");
-const sendToken = require("./getJwtToken");
 
 const sendEmail = async (options) => {
   const transporter = nodeMailer.createTransport({
