@@ -144,3 +144,17 @@ exports.updatePassword = asyncErrorHandler(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
+
+//update profile
+exports.updateProfile = asyncErrorHandler(async (req, res, next) => {
+  const { name, email } = req.body;
+  const user = await User.findByIdAndUpdate(
+    req.user.id,
+    { name, email },
+    { new: true, runValidators: true, useFindAndModify: false }
+  );
+
+  res
+    .status(200)
+    .json({ success: true, messsage: "Profile updated successfully", user });
+});

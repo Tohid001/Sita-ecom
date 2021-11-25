@@ -8,6 +8,7 @@ const {
   resetPassword,
   getUserDetails,
   updatePassword,
+  updateProfile,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -19,6 +20,7 @@ router.route("/password/reset/:token").put(resetPassword);
 router.route("/logout").get(logOut);
 router.route("/me").get(checkLogin, getUserDetails);
 router.route("/password/update").put(checkLogin, updatePassword);
+router.route("/me/update").put(checkLogin, updateProfile);
 
 // router.route("/test").get((req, res, next) => {
 //   console.log("i am user");

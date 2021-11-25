@@ -13,6 +13,7 @@ createProduct = asyncErrorHandler(async (req, res, next) => {
 //getAllProduct
 getProducts = asyncErrorHandler(async (req, res, next) => {
   const resultPerPage = 2;
+
   const productCounts = await Product.countDocuments();
   const appFeature = new AppFeature(Product, req.query)
     .search()
