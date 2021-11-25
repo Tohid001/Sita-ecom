@@ -5,6 +5,7 @@ const AppFeature = require("../utils/appFeatures");
 const sendToken = require("../utils/getJwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const { use } = require("../routes/usersRoute");
 
 //register user
 exports.registerUser = asyncErrorHandler(async (req, res, next) => {
@@ -157,4 +158,24 @@ exports.updateProfile = asyncErrorHandler(async (req, res, next) => {
   res
     .status(200)
     .json({ success: true, messsage: "Profile updated successfully", user });
+});
+
+//get single user detail----admin
+exports.getUserDetailsByAdmin = asyncErrorHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    return next(new Error(`User does not exist with id: ${req.params.id}`));
+  }
+
+  res.status(200).json({ success: true, user });
+});
+
+//get all user details----admin
+exports.getAllUserDetailsByAdmin = asyncErrorHandler(async (req, res, next) => {
+  const users = await User.find();
+  //   if (!users) {
+  //     return next(new Error(`User does not exist with id: ${req.params.id}`));
+  //   }
+
+  res.status(200).json({ success: true, users });
 });

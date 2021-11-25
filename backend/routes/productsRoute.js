@@ -12,16 +12,17 @@ const router = express.Router();
 
 router.get("/products", getProducts);
 router.post(
-  "/product/new",
+  "/admin/product/new",
   checkLogin,
   checkAuthorizeRole("admin"),
   createProduct
 );
 router
-  .route("/product/:id")
+  .route("/admin/product/:id")
   .put(checkLogin, checkAuthorizeRole("admin"), updateProduct)
-  .delete(checkLogin, checkAuthorizeRole("admin"), deleteProduct)
-  .get(getProductDetails);
+  .delete(checkLogin, checkAuthorizeRole("admin"), deleteProduct);
+
+router.route("/product/:id").get(getProductDetails);
 
 // router.route("/test").get((req, res, next) => {
 //   console.log("i am product");
