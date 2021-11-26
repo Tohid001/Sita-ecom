@@ -11,8 +11,9 @@ errorHandler = (err, req, res, next) => {
   }
 
   //wrong mongodb key error
-  if (err.code === "11000") {
+  if (err.code === 11000) {
     const message = `duplicate ${Object.keys(err.keyValue)} is detected`;
+    console.log(`hello ${Object.keys(err.keyValue)}`);
     err = new ErrorHandler(message, 400);
   }
 

@@ -69,6 +69,9 @@ createProductReview = asyncErrorHandler(async (req, res, next) => {
   const { _id: user, name } = req.user;
   const review = { user, name, rating, comment };
   const product = await Product.findById(productId);
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
   const isReviewed = product.reviews.find((rev) => {
     console.log(rev.user.toString(), user);
     return rev.user.toString() == user;
@@ -85,15 +88,54 @@ createProductReview = asyncErrorHandler(async (req, res, next) => {
     product.reviews.push(review);
   }
   product.numOfReviews = product.reviews.length;
-  let avg = 0;
+  let sum = 0;
 
   product.reviews.forEach((rev) => {
-    avg += rev.rating;
+    sum += rev.rating;
   });
 
-  product.ratings = avg / product.reviews.length;
+  product.ratings = sum / product.reviews.length;
 
   await product.save({ validateBeforeSave: false });
+
+  res.status(200).json({ success: true });
+});
+
+//getting all reviews
+getAllReviews = asyncErrorHandler(async (req, res, next) => {
+  const product = await Product.findById(req.query.productId);
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+  res.status(200).json({ success: true, reviews: product.reviews });
+});
+
+//delete review
+deleteReview = asyncErrorHandler(async (req, res, next) => {
+  const product = await Product.findById(req.query.productId);
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+  const reviews = product.reviews.filter(
+    (rev) => rev._id.toString() !== req.query.revId
+  );
+
+  let sum = 0;
+
+  reviews.forEach((rev) => {
+    sum += rev.rating;
+  });
+  numOfReviews = reviews.length;
+  ratings = sum / reviews.length;
+  await Product.findByIdAndUpdate(
+    req.query.productId,
+    {
+      reviews,
+      numOfReviews,
+      ratings,
+    },
+    { new: true, runValidators: true, useFindAndModify: false }
+  );
 
   res.status(200).json({ success: true });
 });
@@ -105,4 +147,6 @@ module.exports = {
   deleteProduct,
   getProductDetails,
   createProductReview,
+  getAllReviews,
+  deleteReview,
 };
