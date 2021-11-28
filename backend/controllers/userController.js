@@ -9,14 +9,83 @@ const { use } = require("../routes/usersRoute");
 
 //register user
 exports.registerUser = asyncErrorHandler(async (req, res, next) => {
-  const { name, email, password } = req.body;
-  const user = await User.create({
+  const { password, confirmPassword, email, name } = req.body;
+
+  if (password !== confirmPassword) {
+    return next(new ErrorHandler("password doesn't match", 400));
+  }
+
+  const user = new User({
     name,
-    email,
     password,
+    email,
     avatar: { public_id: "sample avatar", url: "sample url" },
   });
-  sendToken(user, 200, res);
+  //get resetPasswordToken
+  const varificationToken = user.getEmailVarificationToken();
+
+  //sending varification mail
+  const varificationMailUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/email/varification/${varificationToken}`;
+  const message = `Your email varification token is:\n\n${varificationMailUrl}\n\n`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: `Email verification`,
+      message,
+    });
+    await user.save();
+    res.status(200).json({
+      success: true,
+      message: `A Email sent to ${user.email} successfully with an email varification link. Please varify your email.`,
+    });
+  } catch (error) {
+    // await user.remove();
+    return next(new ErrorHandler(error.message, 500));
+  }
+});
+
+//verify user
+exports.verifyUser = asyncErrorHandler(async (req, res, next) => {
+  //creating token hash
+  const emailVarificationToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  const user = await User.findOne({
+    emailVarificationToken,
+    emailVarificationTokenExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return next(
+      new ErrorHandler(
+        "email verification token is invalid or has been expired",
+        400
+      )
+    );
+  }
+  const message = `Your email has been verified successfully! Congratulatios to our team..`;
+
+  user.verified = true;
+  user.emailVarificationToken = undefined;
+  user.emailVarificationTokenExpire = undefined;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: `Email verification`,
+      message,
+    });
+    await user.save();
+    sendToken(user, 200, res);
+  } catch (error) {
+    await user.remove();
+    return next(new ErrorHandler(error.message, 500));
+  }
 });
 
 //logIn user

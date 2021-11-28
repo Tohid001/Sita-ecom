@@ -26,9 +26,12 @@ const userSchema = mongoose.Schema({
 
   avatar: {
     public_id: { type: String, required: true },
-    url: { type: String, required: true },
+    url: { type: String },
   },
   role: { type: String, default: "user" },
+  verified: { type: String, default: false, required: true },
+  emailVarificationToken: String,
+  emailVarificationTokenExpire: String,
   resetPasswordToken: String,
   resetPasswordExpire: String,
   createdAt: { type: Date, default: Date.now },
@@ -56,10 +59,25 @@ userSchema.methods.comparePassword = async function (enterPassword) {
   return await bcryptjs.compare(enterPassword, this.password);
 };
 
+//generating email varification token
+userSchema.methods.getEmailVarificationToken = function () {
+  //generating token
+  const varificationToken = crypto.randomBytes(10).toString("hex");
+
+  //hashing and adding emailVarificationToken to userSchema
+  this.emailVarificationToken = crypto
+    .createHash("sha256")
+    .update(varificationToken)
+    .digest("hex");
+
+  this.emailVarificationTokenExpire = Date.now() + 15 * 60 * 1000;
+  return varificationToken;
+};
+
 //generating password reset token
 userSchema.methods.getResetPasswordToken = function () {
   //generating token
-  const resetToken = crypto.randomBytes(5).toString("hex");
+  const resetToken = crypto.randomBytes(10).toString("hex");
 
   //hashing and adding resetPasswordToken to userSchema
   this.resetPasswordToken = crypto
