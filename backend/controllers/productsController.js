@@ -64,7 +64,6 @@ deleteProduct = async (req, res, next) => {
 
 //creating or updating review
 createProductReview = asyncErrorHandler(async (req, res, next) => {
-  console.log("rev");
   const { rating, comment, productId } = req.body;
   const { _id: user, name } = req.user;
   const review = { user, name, rating, comment };
@@ -73,13 +72,12 @@ createProductReview = asyncErrorHandler(async (req, res, next) => {
     return next(new ErrorHandler("Product not found", 404));
   }
   const isReviewed = product.reviews.find((rev) => {
-    console.log(rev.user.toString(), user);
-    return rev.user.toString() == user;
+    return rev.user.toString() == user.toString();
   });
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
-      if (rev.user.toString() == user) {
+      if (rev.user.toString() == user.toString()) {
         rev.rating = rating;
         rev.comment = comment;
       }
