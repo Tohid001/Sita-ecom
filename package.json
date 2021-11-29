@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tohid001/ECOMMERCE.git"
+    "url": "git+ https://github.com/Tohid001/demo-EC-project.git"
   },
   "author": "MD. TOHIDUL ISLAM",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Tohid001/ECOMMERCE/issues"
   },
-  "homepage": "https://github.com/Tohid001/ECOMMERCE.git",
+  "homepage": " https://github.com/Tohid001/demo-EC-project.git",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
