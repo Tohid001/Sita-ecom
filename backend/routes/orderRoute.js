@@ -21,7 +21,7 @@ router
   .get(checkLogin, checkAuthorizeRole("admin"), getAllOrders);
 router
   .route("/admin/order/:id")
-  //   .put(checkLogin, checkAuthorizeRole("admin"), updateOrder)
+  .put(checkLogin, checkAuthorizeRole("admin"), updateOrder)
   .delete(checkLogin, checkAuthorizeRole("admin"), deleteOrder)
   .get(checkLogin, checkAuthorizeRole("admin"), getSingleOrder);
 
