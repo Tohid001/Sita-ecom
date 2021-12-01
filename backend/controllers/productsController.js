@@ -7,7 +7,7 @@ const AppFeature = require("../utils/appFeatures");
 createProduct = asyncErrorHandler(async (req, res, next) => {
   req.body.user = req.user.id; // to identify which admin created the product
   const product = await Product.create(req.body);
-  res.status(201).json({ message: "success!", product });
+  res.status(201).json({ success: true, product });
 });
 
 //getAllProduct
@@ -115,27 +115,30 @@ deleteReview = asyncErrorHandler(async (req, res, next) => {
     return next(new ErrorHandler("Product not found", 404));
   }
   const reviews = product.reviews.filter(
-    (rev) => rev._id.toString() !== req.query.revId
+    (rev) =>
+      rev._id.toString() !== req.query.revId &&
+      rev.user.toString() == req.user._id.toString()
   );
 
-  let sum = 0;
+  //bug ---
+  if (reviews.length > 0) {
+    let sum = 0;
+    reviews.forEach((rev) => {
+      sum += rev.rating;
+    });
+  }
 
-  reviews.forEach((rev) => {
-    sum += rev.rating;
-  });
-  numOfReviews = reviews.length;
-  ratings = sum / reviews.length;
-  await Product.findByIdAndUpdate(
+  let numOfReviews = reviews.length;
+  let ratings = !reviews.length ? 0 : sum / reviews.length;
+  //--solved
+
+  const prod = await Product.findByIdAndUpdate(
     req.query.productId,
-    {
-      reviews,
-      numOfReviews,
-      ratings,
-    },
+    { $set: { reviews, numOfReviews, ratings } },
     { new: true, runValidators: true, useFindAndModify: false }
   );
 
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: true, prod });
 });
 
 module.exports = {
