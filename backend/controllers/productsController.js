@@ -71,9 +71,12 @@ createProductReview = asyncErrorHandler(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
-  const isReviewed = product.reviews.find((rev) => {
-    return rev.user.toString() == user.toString();
-  });
+  const isReviewed =
+    product.reviews.length === 0
+      ? false
+      : product.reviews.find((rev) => {
+          return rev.user.toString() == user.toString();
+        });
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
@@ -114,22 +117,31 @@ deleteReview = asyncErrorHandler(async (req, res, next) => {
   if (!product) {
     return next(new ErrorHandler("Product not found", 404));
   }
-  const reviews = product.reviews.filter(
-    (rev) =>
+  const reviews = product.reviews.filter((rev) => {
+    if (
+      rev.user.toString() !== req.user._id &&
+      rev._id.toString() == req.query.revId
+    ) {
+      // res.status(200).json({ success: false });
+      return true;
+    }
+
+    return (
       rev._id.toString() !== req.query.revId &&
-      rev.user.toString() == req.user._id.toString()
-  );
+      rev.user.toString() !== req.user._id.toString()
+    );
+  });
 
   //bug ---
+  let sum = 0;
   if (reviews.length > 0) {
-    let sum = 0;
     reviews.forEach((rev) => {
       sum += rev.rating;
     });
   }
 
   let numOfReviews = reviews.length;
-  let ratings = !reviews.length ? 0 : sum / reviews.length;
+  let ratings = reviews.length === 0 ? 0 : sum / reviews.length;
   //--solved
 
   const prod = await Product.findByIdAndUpdate(
