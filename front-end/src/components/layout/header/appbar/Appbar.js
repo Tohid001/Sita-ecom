@@ -1,7 +1,7 @@
 import React from "react";
 import {
   StyledAppBar,
-  StyledBrand,
+  StyledBrandContainer,
   StyledLogo,
   StyledDesk,
 } from "./Appbar.styled.js";
@@ -13,9 +13,12 @@ function Navbar() {
     <>
       <StyledAppBar>
         <Burger></Burger>
-        <StyledBrand to="/">
+        <StyledBrandContainer
+          to="/"
+          onClick={(event) => event.preventDefault()}
+        >
           <StyledLogo src={Logo} />
-        </StyledBrand>
+        </StyledBrandContainer>
         <StyledDesk></StyledDesk>
       </StyledAppBar>
     </>

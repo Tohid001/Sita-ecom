@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const StyledAppBar = styled.div`
   flex: 0 0 160px;
+
   @media (max-width: 1279px) {
     display: flex;
     position: fixed;
@@ -19,18 +20,20 @@ export const StyledAppBar = styled.div`
   }
 `;
 
-export const StyledBrand = styled(NavLink)`
+export const StyledBrandContainer = styled(NavLink)`
+  display: flex;
+
+  align-items: center;
   @media (max-width: 1279px) {
     width: 90px;
-    display: flex;
     justify-content: center;
-    align-items: center;
   }
 `;
 
 export const StyledLogo = styled.img`
   width: auto;
   height: 52px;
+  background: transparent;
   @media (max-width: 1279px) {
     height: 43px;
   }
