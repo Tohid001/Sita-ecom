@@ -1,8 +1,16 @@
-// import logo from "./logo.svg";
-// import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { GlobalStyles } from "./Global.styled.js";
+import Header from "./components/layout/header/header elements/Header.js";
 
 function App() {
-  return <p className="bg-slate-300">hello</p>;
+  return (
+    <>
+      <GlobalStyles />
+      <Header />
+    </>
+  );
 }
 
 export default App;

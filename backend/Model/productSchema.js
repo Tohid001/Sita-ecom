@@ -27,7 +27,15 @@ const productSchema = mongoose.Schema({
       url: { type: String, required: true },
     },
   ],
-  category: {
+  primaryCategory: {
+    type: String,
+    required: true,
+  },
+  secondaryCategory: {
+    type: String,
+    required: true,
+  },
+  brand: {
     type: String,
     required: true,
   },
@@ -45,7 +53,7 @@ const productSchema = mongoose.Schema({
       comment: { type: String, required: true },
     },
   ],
-  user: { type: mongoose.Schema.ObjectId, ref: "User", required: true },
+  user: { type: mongoose.Schema.ObjectId, ref: "user", required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
