@@ -24,7 +24,7 @@ export const StyledContainer = styled.div`
   height: 40px;
   border-radius: ${(props) => (props.toggled ? "40px" : null)};
   /* margin: 4px 0 0 0; */
-  padding: 13px 8px;
+  padding: 14px 10px;
   cursor: pointer;
   background: ${(props) => (props.toggled ? "rgba(255, 255, 255, 0.1)" : null)};
   transition: all 300ms ease;

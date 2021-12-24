@@ -20,10 +20,12 @@ export const StyledHeaderTop = styled.div`
 `;
 
 export const StyledHeaderContainer = styled.div`
+  color: white;
   width: 100%;
   display: flex;
-  padding-right: 15px;
-  padding-left: 15px;
+  /* align-items: center; */
+  /* justify-content: center; */
+  padding: 0 15px;
   margin-right: auto;
   margin-left: auto;
   @media (max-width: 1279px) {
