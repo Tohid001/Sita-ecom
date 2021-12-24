@@ -38,16 +38,3 @@ export const StyledLogo = styled.img`
     height: 43px;
   }
 `;
-
-export const StyledDesk = styled.a`
-  @media (max-width: 1279px) {
-    width: calc(50% - 45px);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 2px;
-  }
-  @media (min-width: 1280px) {
-    display: none;
-  }
-`;

@@ -3,10 +3,10 @@ import {
   StyledAppBar,
   StyledBrandContainer,
   StyledLogo,
-  StyledDesk,
 } from "./Appbar.styled.js";
-import Burger from "./Burger";
+import Burger from "./Burger/Burger.js";
 import Logo from "../../../../assets/logo.png";
+import Desk from "./desk/Desk";
 
 function Navbar() {
   return (
@@ -19,7 +19,7 @@ function Navbar() {
         >
           <StyledLogo src={Logo} />
         </StyledBrandContainer>
-        <StyledDesk></StyledDesk>
+        <Desk></Desk>
       </StyledAppBar>
     </>
   );

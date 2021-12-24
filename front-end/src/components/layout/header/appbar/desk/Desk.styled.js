@@ -1,0 +1,37 @@
+import styled from "styled-components";
+
+export const StyledDeskContainer = styled.div`
+  display: none;
+
+  @media (max-width: 1279px) {
+    width: calc(50% - 45px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 2px;
+  }
+`;
+
+export const StyledIconContainer = styled.div`
+  margin-left: 15px;
+  position: relative;
+  & svg {
+    height: 24px;
+    width: 24px;
+    color: #fff;
+  }
+`;
+
+export const StyledCounter = styled.div`
+ position: absolute;
+    right: -10px;
+    top: -6px;
+    background: #EF4A23;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 11px;
+    line-height: 13px;
+    width: 16px;
+    text-align: center;
+  }
+`;
