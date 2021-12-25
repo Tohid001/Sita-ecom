@@ -23,8 +23,8 @@ export const StyledHeaderContainer = styled.div`
   color: white;
   width: 100%;
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
+  align-items: center;
+  justify-content: center;
   padding: 0 15px;
   margin-right: auto;
   margin-left: auto;
@@ -34,5 +34,8 @@ export const StyledHeaderContainer = styled.div`
   }
   @media (min-width: 1280px) {
     max-width: 100%;
+  }
+  @media (min-width: 1366px) {
+    max-width: 1320px;
   }
 `;
