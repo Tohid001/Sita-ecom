@@ -10,10 +10,11 @@ export const StyledAppBar = styled.div`
     left: 0;
     top: 0;
     right: 0;
-    z-index: 101;
+    z-index: 99;
     background: #081621;
     padding: 0 15px;
-    box-shadow: 0 5px 5px rgb(0 0 0 / 20%);
+    box-shadow: ${(props) =>
+      props.searchOpen ? "" : "0 5px 5px rgb(0 0 0 / 20%)"};
     width: 100vw;
     align-items: center;
     justify-content: center;

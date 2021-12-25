@@ -20,18 +20,20 @@ export const StyledIconContainer = styled.div`
     width: 24px;
     color: #fff;
   }
+  & svg:nth-child(1) {
+    color: ${(props) => (props.searchOpen ? "#EF4A23" : "#fff")};
+  }
 `;
 
 export const StyledCounter = styled.div`
- position: absolute;
-    right: -10px;
-    top: -6px;
-    background: #EF4A23;
-    color: #fff;
-    border-radius: 20px;
-    font-size: 11px;
-    line-height: 13px;
-    width: 16px;
-    text-align: center;
-  }
+  position: absolute;
+  right: -10px;
+  top: -6px;
+  background: #ef4a23;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 11px;
+  line-height: 13px;
+  width: 16px;
+  text-align: center;
 `;

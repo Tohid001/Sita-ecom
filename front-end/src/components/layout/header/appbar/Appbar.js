@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../Context/HeaderContext";
 import {
   StyledAppBar,
   StyledBrandContainer,
@@ -9,9 +10,10 @@ import Logo from "../../../../assets/logo.png";
 import Desk from "./desk/Desk";
 
 function Navbar() {
+  const { dispatch, ...data } = useContext(UserContext);
   return (
     <>
-      <StyledAppBar>
+      <StyledAppBar searchOpen={data.searchOpen}>
         <Burger></Burger>
         <StyledBrandContainer
           to="/"

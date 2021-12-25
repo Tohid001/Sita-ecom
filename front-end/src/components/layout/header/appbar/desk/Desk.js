@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../Context/HeaderContext";
 import {
   StyledDeskContainer,
   StyledIconContainer,
@@ -6,11 +7,18 @@ import {
 } from "./Desk.styled";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdOutlineShoppingBasket } from "react-icons/md";
+
 function Desk() {
+  const { dispatch, ...data } = useContext(UserContext);
+  console.log(` search icon ${data.searchOpen}`);
   return (
     <StyledDeskContainer>
-      <StyledIconContainer>
-        <AiOutlineSearch />
+      <StyledIconContainer searchOpen={data.searchOpen}>
+        <AiOutlineSearch
+          onClick={() => {
+            dispatch({ type: "setSearchOpen" });
+          }}
+        />
       </StyledIconContainer>
       <StyledIconContainer>
         <MdOutlineShoppingBasket />

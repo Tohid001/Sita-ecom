@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../Context/HeaderContext.js";
 import {
   StyledBurgerContainer,
   StyledContainer,
@@ -7,15 +8,17 @@ import {
 
 function Burger() {
   const [toggled, setToggled] = useState(false);
+  const { dispatch, ...data } = useContext(UserContext);
+  console.log(data);
   return (
     <StyledBurgerContainer>
       <StyledContainer
-        toggled={toggled}
+        toggled={data.toggled}
         onClick={() => {
-          setToggled(!toggled);
+          dispatch({ type: "setToggled" });
         }}
       >
-        <StyledBar toggled={toggled} />
+        <StyledBar toggled={data.toggled} />
       </StyledContainer>
     </StyledBurgerContainer>
   );
