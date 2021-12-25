@@ -3,37 +3,36 @@ import styled from "styled-components";
 export const StyledHeader = styled.div`
   background: #081621;
   box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+
   position: relative;
   z-index: 100;
-  @media (max-width: 1279px) {
-    margin-bottom: 15px;
+  @media (min-width: 1280px) {
+    margin-bottom: 30px;
   }
 `;
 
 export const StyledHeaderTop = styled.div`
-  padding: 15px 0;
+  padding: 0;
 
-  @media (max-width: 1279px) {
-    padding: 0;
+  @media (min-width: 1280px) {
+    padding: 15px 0;
   }
 `;
 
 export const StyledHeaderContainer = styled.div`
+  display: block;
+  max-width: 100%;
   color: white;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0 15px;
   margin-right: auto;
   margin-left: auto;
-  @media (max-width: 1279px) {
-    display: block;
-    max-width: 100%;
-  }
+
   @media (min-width: 1280px) {
-    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   @media (min-width: 1366px) {
     max-width: 1320px;

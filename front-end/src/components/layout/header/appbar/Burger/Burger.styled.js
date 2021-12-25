@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const StyledBurgerContainer = styled.div`
-  @media (max-width: 1279px) {
-    display: flex;
-    align-items: center;
-    width: calc(50% - 45px);
-    height: 50px;
-    /* left: 0; */
-    /* top: 0; */
-    /* position: relative; */
-  }
+  display: flex;
+  align-items: center;
+  width: calc(50% - 45px);
+  height: 50px;
+  /* left: 0; */
+  /* top: 0; */
+  /* position: relative; */
   @media (min-width: 1280px) {
     display: none;
   }
