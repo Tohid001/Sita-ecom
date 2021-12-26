@@ -16,12 +16,9 @@ export const StyledBurgerContainer = styled.div`
 export const StyledContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  /* position: relative; */
   width: 40px;
   height: 40px;
   border-radius: ${(props) => (props.toggled ? "40px" : null)};
-  /* margin: 4px 0 0 0; */
   padding: 14px 10px;
   cursor: pointer;
   background: ${(props) => (props.toggled ? "rgba(255, 255, 255, 0.1)" : null)};

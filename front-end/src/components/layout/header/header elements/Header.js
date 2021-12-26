@@ -7,6 +7,7 @@ import {
 } from "./Header.styled";
 import Appbar from "../appbar/Appbar";
 import SearchBar from "../Search/Search";
+import BottomNavigationBar from "../bottomNavigation/BottomNavigation";
 
 // import Sidebar from "./sidebar/Sidebar";
 // import BottomNavigation from "./bottomNavigation/BottomNavigation.js";
@@ -19,6 +20,7 @@ function Header() {
           <StyledHeaderContainer>
             <Appbar></Appbar>
             <SearchBar></SearchBar>
+            <BottomNavigationBar></BottomNavigationBar>
           </StyledHeaderContainer>
         </StyledHeaderTop>
       </StyledHeader>

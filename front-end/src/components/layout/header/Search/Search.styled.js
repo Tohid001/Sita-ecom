@@ -8,10 +8,8 @@ export const StyledSeachContainer = styled.div`
   left: 0px;
   right: 0px;
   box-shadow: 0 5px 5px rgb(0 0 0 / 20%);
-  /* margin: 0 -15px 0; */
   padding: 0;
   background: #fff;
-  /* z-index: 100; */
   transition: all 400ms ease;
 
   @media (min-width: 1280px) {

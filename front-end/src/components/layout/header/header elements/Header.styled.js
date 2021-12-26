@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.div`
-  background: #081621;
+  background: var(--header);
   box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
   margin-bottom: 15px;
 
@@ -21,7 +21,10 @@ export const StyledHeaderTop = styled.div`
 `;
 
 export const StyledHeaderContainer = styled.div`
-  display: block;
+  /* display: block; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
   color: white;
   width: 100%;
@@ -29,12 +32,12 @@ export const StyledHeaderContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
 
-  @media (min-width: 1280px) {
+  /* @media (min-width: 1280px) {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */
   @media (min-width: 1366px) {
-    max-width: 1320px;
+    max-width: 1410px;
   }
 `;

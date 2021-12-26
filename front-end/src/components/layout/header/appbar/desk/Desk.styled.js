@@ -21,7 +21,7 @@ export const StyledIconContainer = styled.div`
     color: #fff;
   }
   & svg:nth-child(1) {
-    color: ${(props) => (props.searchOpen ? "#EF4A23" : "#fff")};
+    color: ${(props) => (props.searchOpen ? "var(--iconActiveColor)" : "#fff")};
   }
 `;
 
@@ -29,7 +29,7 @@ export const StyledCounter = styled.div`
   position: absolute;
   right: -10px;
   top: -6px;
-  background: #ef4a23;
+  background: var(--iconActiveColor);
   color: #fff;
   border-radius: 20px;
   font-size: 11px;
