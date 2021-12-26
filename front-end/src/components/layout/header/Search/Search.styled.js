@@ -44,3 +44,17 @@ export const StyledInput = styled.input.attrs((props) => ({
     border-radius: 4px;
   }
 `;
+
+export const StyledSearchButton = styled.button`
+  top: 12px;
+  opacity: 0.5;
+  position: absolute;
+  right: 7px;
+
+  border: none;
+  background: none;
+  @media (min-width: 1280px) {
+    top: 10px;
+    opacity: 1;
+  }
+`;

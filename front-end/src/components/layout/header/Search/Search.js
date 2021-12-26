@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import { UserContext } from "../Context/HeaderContext";
+import { AiOutlineSearch } from "react-icons/ai";
 
-import { StyledSeachContainer, StyledInput } from "./Search.styled";
+import {
+  StyledSeachContainer,
+  StyledInput,
+  StyledSearchButton,
+} from "./Search.styled";
 
 function Search() {
   // console.log("search is rendered");
@@ -9,6 +14,9 @@ function Search() {
   return (
     <StyledSeachContainer searchOpen={data.searchOpen}>
       <StyledInput />
+      <StyledSearchButton>
+        <AiOutlineSearch size={24} />
+      </StyledSearchButton>
     </StyledSeachContainer>
   );
 }
