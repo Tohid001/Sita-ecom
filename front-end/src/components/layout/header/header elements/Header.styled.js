@@ -4,7 +4,7 @@ export const StyledHeader = styled.div`
   background: var(--header);
   box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 15px;
-  width: 100%;
+  max-width: 100%;
 
   @media (min-width: 1280px) {
     margin-bottom: 30px;

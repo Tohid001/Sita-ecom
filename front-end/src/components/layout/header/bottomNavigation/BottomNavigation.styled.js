@@ -10,6 +10,7 @@ export const StyledBottomNavigationContainer = styled.div`
     bottom: 0px;
     left: 0;
     right: 0;
+    /* width: 100%; */
     /* bottom: 20; */
     height: 61px;
     background: var(--header);

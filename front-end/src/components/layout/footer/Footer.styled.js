@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.div`
   padding: 0 0 50px;
-  width: 100%;
+  /* width: 100%; */
   /* position: fixed;
-  bottom: 0; */
-  /* left: 0; */
-  /* right: 0; */
-  margin-top: auto;
+  bottom: 61px;
+  left: 0;
+  right: 0; */
+  /* margin-top: auto; */
 
   background: var(--header);
   @media (min-width: 768px) {

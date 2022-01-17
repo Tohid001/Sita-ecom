@@ -10,10 +10,13 @@ export const GlobalStyles = createGlobalStyle`
   font-family: "Trebuchet MS", sans-serif;
   
 }
-/* html,body{
- position:relative;
- min-height:100vh;
-} */
+
+@media (max-width: 1279px) {
+  body{
+  margin-bottom:61px;
+  /* position:relative; */
+}
+  }
 
 
 &:root{--header:#081621;--iconActiveColor:rgb(235, 52, 131)};

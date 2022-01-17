@@ -8,7 +8,13 @@ function Home() {
   return (
     <>
       <div class="parent">
-        <div style={{ position: "sticky", top: 0 }}>
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            // boxShadow: "0 2px 2px rgb(0 0 0 / 10%)",
+          }}
+        >
           <Header />
         </div>
         <p>hdhdhdhdhdhdhdhdh</p>
@@ -72,36 +78,19 @@ function Home() {
         <p>hdhdhdhdhdhdhdhdh</p>
         <p>hdhdhdhdhdhdhdhdh</p>
         <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
+        <p>OOOOOOOOOOOOOOOOOOOOOOOOOOOOoo</p>
         <Outlet />
+
+        {/* <div
+          style={{
+            marginTop: "auto",
+            // position: "sticky",
+            // bottom: "61px",
+            width: "100%",
+          }}
+        >
+          
+        </div> */}
         <Footer />
       </div>
     </>

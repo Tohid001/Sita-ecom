@@ -5,9 +5,7 @@ export const StyledAppBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
-
   @media (min-width: 1280px) {
     flex: 0 0 130px;
     display: block;
