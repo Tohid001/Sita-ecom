@@ -1,8 +1,10 @@
 .parent {
   display: flex;
   flex-direction: column;
-  /* min-height: calc(100vh-61px);
-  min-height: -moz-calc(100vh-61px);
-  min-height: -webkit-calc(100vh-61px); */
   min-height: calc(100vh - 61px);
+}
+@media (min-width: 1280px) {
+  .parent {
+    min-height: 100vh;
+  }
 }
