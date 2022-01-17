@@ -16,7 +16,6 @@ export const StyledSeachContainer = styled.div`
   }
 
   @media (min-width: 1280px) {
-    /* padding: 5px 0; */
     position: relative;
     top: 0;
     background: transparent;

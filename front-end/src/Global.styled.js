@@ -11,13 +11,13 @@ export const GlobalStyles = createGlobalStyle`
   
 }
 
-@media (max-width: 1279px) {
-  body{
-  margin-bottom:61px;
-  /* position:relative; */
-}
-  }
+/* html,body{height:100%} */
 
+@media (max-width: 1279px) {
+  body {
+    margin-bottom: 61px;
+  }
+}
 
 &:root{--header:#081621;--iconActiveColor:rgb(235, 52, 131)};
 .actionIcon{

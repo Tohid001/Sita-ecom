@@ -2,12 +2,6 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.div`
   padding: 0 0 50px;
-  /* width: 100%; */
-  /* position: fixed;
-  bottom: 61px;
-  left: 0;
-  right: 0; */
-  /* margin-top: auto; */
 
   background: var(--header);
   @media (min-width: 768px) {
@@ -17,8 +11,6 @@ export const StyledFooter = styled.div`
   @media (min-width: 1280px) {
     padding: 0;
     font-size: 16px;
-    /* bottom: 0;
-    z-index: 10; */
   }
 `;
 
@@ -42,7 +34,6 @@ export const StyledMainFooter = styled.div`
   }
   @media (max-width: 1279px) {
     font-size: 14px;
-    /* padding-top: 50px; */
   }
 `;
 
