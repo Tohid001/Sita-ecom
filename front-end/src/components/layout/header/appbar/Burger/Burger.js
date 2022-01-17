@@ -9,7 +9,7 @@ import {
 function Burger() {
   const [toggled, setToggled] = useState(false);
   const { dispatch, ...data } = useContext(UserContext);
-  console.log(data);
+  // console.log(data);
   return (
     <StyledBurgerContainer>
       <StyledContainer

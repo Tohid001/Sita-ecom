@@ -1,16 +1,21 @@
 import React from "react";
-import { Routes, Route, Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
 import { GlobalStyles } from "./Global.styled.js";
-import Header from "./components/layout/header/header elements/Header.js";
+import Home from "./pages/Home.js";
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <Routes>
-        <Route path="/" element={<Header />} />
-      </Routes>
+      <Router>
+        <GlobalStyles />
+
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route />
+          </Route>
+        </Routes>
+      </Router>
     </>
   );
 }

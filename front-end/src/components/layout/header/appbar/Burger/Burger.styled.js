@@ -41,7 +41,8 @@ export const StyledBar = styled.span`
     width: 100%;
     position: absolute;
     height: 2px;
-    background: white;
+    background: ${(props) =>
+      props.toggled ? "var(--iconActiveColor)" : "white"};
     transition: all 300ms ease;
   }
   &:before {

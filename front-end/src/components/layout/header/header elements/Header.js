@@ -5,7 +5,7 @@ import {
   StyledHeaderTop,
   StyledHeaderContainer,
 } from "./Header.styled";
-import Appbar from "../appbar/Appbar";
+import Navbar from "../appbar/Appbar";
 import SearchBar from "../Search/Search";
 import BottomNavigationBar from "../bottomNavigation/BottomNavigation";
 
@@ -18,12 +18,15 @@ function Header() {
       <StyledHeader>
         <StyledHeaderTop>
           <StyledHeaderContainer>
-            <Appbar></Appbar>
+            <Navbar></Navbar>
             <SearchBar></SearchBar>
             <BottomNavigationBar></BottomNavigationBar>
           </StyledHeaderContainer>
         </StyledHeaderTop>
       </StyledHeader>
+      {/* <div className="header">
+        <div className="headerTop"><div className="headerContainer"></div></div>
+      </div> */}
     </UserProvider>
   );
 }

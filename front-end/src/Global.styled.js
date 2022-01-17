@@ -10,6 +10,12 @@ export const GlobalStyles = createGlobalStyle`
   font-family: "Trebuchet MS", sans-serif;
   
 }
+/* html,body{
+ position:relative;
+ min-height:100vh;
+} */
+
+
 &:root{--header:#081621;--iconActiveColor:rgb(235, 52, 131)};
 .actionIcon{
   font-size: 20px;

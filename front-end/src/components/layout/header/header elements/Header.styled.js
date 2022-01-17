@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.div`
   background: var(--header);
-  box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   margin-bottom: 15px;
+  width: 100%;
 
-  position: relative;
-  z-index: 100;
   @media (min-width: 1280px) {
     margin-bottom: 30px;
   }
@@ -21,7 +20,6 @@ export const StyledHeaderTop = styled.div`
 `;
 
 export const StyledHeaderContainer = styled.div`
-  /* display: block; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,11 +30,6 @@ export const StyledHeaderContainer = styled.div`
   margin-right: auto;
   margin-left: auto;
 
-  /* @media (min-width: 1280px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
   @media (min-width: 1366px) {
     max-width: 1410px;
   }
