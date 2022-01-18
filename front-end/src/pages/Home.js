@@ -2,12 +2,13 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/layout/header/header elements/Header";
 import Footer from "../components/layout/footer/Footer";
-import "./home.css";
+
+import { StyledHome } from "./Home.styled";
 
 function Home() {
   return (
     <>
-      <div class="parent">
+      <StyledHome>
         <div
           style={{
             position: "sticky",
@@ -22,6 +23,7 @@ function Home() {
         <p>hdhdhdhdhdhdhdhdh</p>
         <p>hdhdhdhdhdhdhdhdh</p>
         <p>hdhdhdhdhdhdhdhdh</p>
+        <p>hdhdhdhdhdhdhdhdh</p>
         <Outlet />
         <div
           style={{
@@ -30,7 +32,7 @@ function Home() {
         >
           <Footer />
         </div>
-      </div>
+      </StyledHome>
     </>
   );
 }

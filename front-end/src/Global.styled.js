@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
+export const GlobalReset = createGlobalStyle`
  *,
 *::before,
 *::after {
@@ -19,7 +19,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 }
 
-&:root{--header:#081621;--iconActiveColor:rgb(235, 52, 131)};
+&:root{--header:#081621;--iconActiveColor:rgb(235, 52, 131);--vh:${(props) => {
+  console.log(props.vh);
+  return props.vh;
+}}};
 .actionIcon{
   font-size: 20px;
   color:white;
