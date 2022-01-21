@@ -9,7 +9,7 @@ export const StyledFooter = styled.div`
     font-size: 14px;
   }
   @media (min-width: 1280px) {
-    padding: 0;
+    padding: 50px 0 0;
     font-size: 16px;
   }
 `;
@@ -18,29 +18,9 @@ export const StyledFooterContainer = styled.div`
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+
   @media (min-width: 1366px) {
+    margin: auto;
     max-width: 1320px;
-  }
-`;
-
-export const StyledMainFooter = styled.div`
-  display: flex;
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    padding: 20px 0 0;
-    border-bottom: none;
-  }
-  @media (max-width: 1279px) {
-    font-size: 14px;
-  }
-`;
-
-export const StyledContactContainer = styled.div`
-  @media (max-width: 768px) {
-    flex: 1 1 100%;
-    padding: 0;
-    margin-bottom: 10px;
   }
 `;

@@ -18,12 +18,6 @@ function Home() {
           <Header />
         </div>
 
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
-        <p>hdhdhdhdhdhdhdhdh</p>
         <Outlet />
         <div
           style={{

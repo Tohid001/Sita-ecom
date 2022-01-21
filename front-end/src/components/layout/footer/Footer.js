@@ -1,5 +1,6 @@
 import React from "react";
 import Mainfooter from "./Mainfooter";
+
 import { StyledFooter } from "./Footer.styled";
 import { StyledFooterContainer } from "./Footer.styled";
 
