@@ -49,6 +49,7 @@ export const StyledListContainer = styled.ul`
   @media (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
+    padding-right: 10px;
   }
   @media (max-width: 768px) {
     text-align: center;
@@ -125,4 +126,8 @@ export const StyledSocialLinks = styled.a`
   border-radius: 40px;
   background: rgba(255, 255, 255, 0.1);
   display: inline-block;
+  cursor: pointer;
+  &:hover {
+    background: #3749bb;
+  }
 `;
