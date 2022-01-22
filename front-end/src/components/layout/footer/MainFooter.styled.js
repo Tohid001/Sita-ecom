@@ -1,7 +1,10 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledMainFooter = styled.div`
   display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
 
   @media (max-width: 1279px) {
     font-size: 14px;
@@ -11,19 +14,17 @@ export const StyledMainFooter = styled.div`
     padding: 20px 0 0;
     border-bottom: none;
   }
+  @media (min-width: 1366px) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 `;
 
 export const StyleMainFooterContainer = styled.div`
-  flex: 1 1 100%;
+  flex: 0 0 100%;
   margin-bottom: 10px;
   @media (min-width: 768px) {
-    flex: ${({ type }) => (type === "aboutUs" ? "1 1 50%" : "1 1 25%")};
-    padding: ${({ type }) =>
-      type === "aboutUs"
-        ? 0
-        : type === "contacts"
-        ? "0 50px 0 0"
-        : "0 0 0 50px"};
+    flex: 0 0 25%;
+
     margin-bottom: 0;
   }
 `;
@@ -44,65 +45,8 @@ export const StyledHeader = styled.h4`
   }
 `;
 
-export const StyledContactBox = styled.a`
-  display: flex;
-
-  padding: 10px 0;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-decoration: none;
-  color: #ef4a23;
-  &:hover {
-    @media (min-width: 768px) {
-      border-color: #ef4a23;
-    }
-  }
-  @media (max-width: 768px) {
-    max-width: 300px;
-    margin: 0 auto 20px;
-  }
+export const StyledListContainer = styled.ul`
   @media (min-width: 768px) {
-    width: 100%;
-    padding-right: 4px;
-  }
-`;
-
-export const StyledContactIconContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px 0 20px;
-  margin-right: 20px;
-  border-right: 1px solid #333;
-`;
-
-export const StyledContactText = styled.div`
-  flex-basis: 100%;
-  font-weight: normal;
-  white-space: nowrap;
-
-  & p {
-    margin: 0 0 4px;
-    font-size: 12px;
-    line-height: 16px;
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  & h5 {
-    color: #ef4a23;
-    font-size: 20px;
-    line-height: 28px;
-    @media (min-width: 768px) {
-      border-color: #ef4a23;
-      font-size: 20px;
-    }
-  }
-`;
-
-export const StyledAboutBox = styled.ul`
-  @media (max-width: 1279px) {
     display: flex;
     flex-wrap: wrap;
   }
@@ -113,9 +57,18 @@ export const StyledAboutBox = styled.ul`
   }
 `;
 
-export const StyledAboutItem = styled.li`
-  @media (max-width: 1279px) {
-    width: 50%;
+export const StyledListItem = styled(NavLink)`
+  text-decoration: none;
+  color: #999;
+  display: inline-block;
+  width: 32%;
+  line-height: 20px;
+
+  &:hover {
+    color: #ef4a23;
+    text-decoration: underline;
+  }
+  @media (min-width: 768px) {
     flex: 0 0 50%;
     padding: 0 0 15px;
   }
@@ -136,4 +89,40 @@ export const StyledAboutItem = styled.li`
       top: 9px;
     }
   }
+`;
+
+export const StyledOrgInfoBox = styled.div`
+  color: #666666;
+  font-size: 14px;
+  line-height: 26px;
+
+  padding-top: ${(props) => props.type === "socialLink" && "10px"};
+
+  @media (max-width: 768px) {
+    max-width: 340px;
+    margin: 0 auto 10px;
+    color: #999;
+    text-align: center;
+  }
+  & b {
+    color: #fff;
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 5px;
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+`;
+
+export const StyledSocialLinks = styled.a`
+  text-decoration: none;
+
+  margin-right: 6px;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-block;
 `;

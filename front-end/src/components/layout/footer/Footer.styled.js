@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.div`
-  padding: 0 0 50px;
+  /* padding: 0 0 50px; */
 
   background: var(--header);
   @media (min-width: 768px) {
