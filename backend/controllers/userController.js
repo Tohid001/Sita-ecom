@@ -9,42 +9,54 @@ const { use } = require("../routes/usersRoute");
 
 //register user
 exports.registerUser = asyncErrorHandler(async (req, res, next) => {
-  const { password, confirmPassword, email, name } = req.body;
-
-  if (password !== confirmPassword) {
-    return next(new ErrorHandler("password doesn't match", 400));
-  }
+  const { password, confirmPassword, email, firstName, lastName, userName } =
+    req.body;
 
   const user = new User({
-    name,
     password,
     email,
+    firstName,
+    lastName,
+    userName,
     avatar: { public_id: "sample avatar", url: "sample url" },
   });
   //get resetPasswordToken
+  console.log(this._id);
   const varificationToken = user.getEmailVarificationToken();
-
+  // console.log(varificationToken);
   //sending varification mail
   const varificationMailUrl = `${req.protocol}://${req.get(
     "host"
   )}/api/v1/email/varification/${varificationToken}`;
   const message = `Your email varification token is:\n\n${varificationMailUrl}\n\n`;
 
-  try {
-    await sendEmail({
-      email: user.email,
-      subject: `Email verification`,
-      message,
-    });
-    await user.save();
-    res.status(200).json({
-      success: true,
-      message: `A Email sent to ${user.email} successfully with an email varification link. Please varify your email.`,
-    });
-  } catch (error) {
-    // await user.remove();
-    return next(new ErrorHandler(error.message, 500));
-  }
+  // try {
+  //   await sendEmail({
+  //     email: user.email,
+  //     subject: `Email verification`,
+  //     message,
+  //   });
+  //   // console.log("email send");
+  //   await user.save();
+  //   res.status(200).json({
+  //     success: true,
+  //     message: `A Email sent to ${user.email} successfully with an email varification link. Please varify your email.`,
+  //   });
+  // } catch (error) {
+  //   // await user.remove();
+  //   return next(new ErrorHandler(error.message, 500));
+  // }
+  await sendEmail({
+    email: user.email,
+    subject: `Email verification`,
+    message,
+  });
+  console.log("email send");
+  await user.save();
+  res.status(200).json({
+    success: true,
+    message: `A Email sent to ${user.email} successfully with an email varification link. Please varify your email.`,
+  });
 });
 
 //verify user

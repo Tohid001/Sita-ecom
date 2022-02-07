@@ -8,7 +8,7 @@ const dataBaseConnection = () => {
     })
     .then((data) => {
       console.log(`MongoDB is connected with server: ${data.connection.host}`);
-      //   console.log(data.connection);
+      // console.log(data.connection);
     });
 };
 

@@ -12,6 +12,7 @@ createProduct = asyncErrorHandler(async (req, res, next) => {
 
 //getAllProduct
 getProducts = asyncErrorHandler(async (req, res, next) => {
+  console.log("I am allProducts");
   const resultPerPage = 2;
 
   const productCounts = await Product.countDocuments();

@@ -20,6 +20,9 @@ app.use("/api/v1", order);
 
 //not found handler
 app.use((req, res, next) => {
+  // let err = new ErrorHandler("page not found", 404);
+
+  console.log("not found handler");
   next(new ErrorHandler("page not found", 404));
 });
 

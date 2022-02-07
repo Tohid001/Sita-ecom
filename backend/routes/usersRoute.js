@@ -1,4 +1,8 @@
 const express = require("express");
+const {
+  registerUserValidators,
+  registerUserValidationResult,
+} = require("../middleware/validationHandler");
 const { checkLogin, checkAuthorizeRole } = require("../middleware/checkLogin");
 const {
   registerUser,
@@ -18,7 +22,9 @@ const {
 
 const router = express.Router();
 
-router.route("/register").post(registerUser);
+router
+  .route("/register")
+  .post(registerUserValidators, registerUserValidationResult, registerUser);
 router.route("/email/varification/:token").put(verifyUser);
 router.route("/login").post(logInUser);
 router.route("/password/forgot").post(forgotPassword);

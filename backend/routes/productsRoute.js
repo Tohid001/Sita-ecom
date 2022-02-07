@@ -31,7 +31,7 @@ router.route("/reviews").get(getAllReviews).put(checkLogin, deleteReview);
 
 // router.route("/test").get((req, res, next) => {
 //   console.log("i am product");
-//   res.json({});
+//   res.json({ test: "test" });
 //   next();
 // });
 // router.route("/test").get((req, res, next) => {

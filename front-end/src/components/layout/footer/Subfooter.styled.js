@@ -25,7 +25,7 @@ export const StyledSubfooter = styled.div`
     }
   }
   @media screen and (min-width: 768px) and (max-width: 1366px) {
-    padding: 0 15px;
+    padding: 15px 15px;
   }
   @media (max-width: 1366px) {
     background: rgba(0, 0, 0, 0.4);
