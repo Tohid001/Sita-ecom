@@ -6,7 +6,7 @@ import {
   StyledLogo,
 } from "./Appbar.styled.js";
 import Burger from "./Burger/Burger.js";
-import Logo from "../../../../assets/pexels-photo-708440";
+import Logo from "../../../../assets/logo.png";
 import Desk from "./desk/Desk";
 
 function Navbar() {

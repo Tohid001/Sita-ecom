@@ -16,14 +16,23 @@ export const GlobalReset = createGlobalStyle`
 
 @media (max-width: 1279px) {
   body {
-    margin-bottom: 61px;
+    margin-bottom: var(--bottomBarClearance);
   }
 }
 
-&:root{--header:#081621;--iconActiveColor:rgb(235, 52, 131);--vh:${(props) => {
+&:root{--header:#081621;
+--iconActiveColor:rgb(235, 52, 131);
+--vh:${(props) => {
   console.log(props.vh);
   return props.vh;
-}}};
+}};
+--bottomBarClearance:${(props) => {
+  console.log(props.bottomBarClearance);
+  return props.bottomBarClearance;
+}};};
+
+
+
 .actionIcon{
   font-size: 20px;
   color:white;

@@ -9,7 +9,7 @@ import { IconContext } from "react-icons";
 
 function BottomNavigation() {
   return (
-    <StyledBottomNavigationContainer>
+    <StyledBottomNavigationContainer id="bottomBar">
       <IconContext.Provider value={{ className: "actionIcon" }}>
         {data.map((value, index) => (
           <StyledActionContainer key={index} to={value.path}>

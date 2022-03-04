@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const StyledBottomNavigationContainer = styled.div`
+  z-index: 30000000000;
   display: flex;
   align-items: stretch;
   justify-content: space-around;

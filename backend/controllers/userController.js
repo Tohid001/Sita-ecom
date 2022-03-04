@@ -20,10 +20,10 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
     userName,
     avatar: { public_id: "sample avatar", url: "sample url" },
   });
-  //get resetPasswordToken
-  console.log(this._id);
+
+  //get getEmailVarificationToken
   const varificationToken = user.getEmailVarificationToken();
-  // console.log(varificationToken);
+
   //sending varification mail
   const varificationMailUrl = `${req.protocol}://${req.get(
     "host"
@@ -46,6 +46,7 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
   //   // await user.remove();
   //   return next(new ErrorHandler(error.message, 500));
   // }
+
   await sendEmail({
     email: user.email,
     subject: `Email verification`,
@@ -86,18 +87,14 @@ exports.verifyUser = asyncErrorHandler(async (req, res, next) => {
   user.emailVarificationToken = undefined;
   user.emailVarificationTokenExpire = undefined;
 
-  try {
-    await sendEmail({
-      email: user.email,
-      subject: `Email verification`,
-      message,
-    });
-    await user.save();
-    sendToken(user, 200, res);
-  } catch (error) {
-    await user.remove();
-    return next(new ErrorHandler(error.message, 500));
-  }
+  await sendEmail({
+    email: user.email,
+    subject: `Email verification`,
+    message,
+  });
+
+  sendToken(user, 200, res);
+  await user.save();
 });
 
 //logIn user

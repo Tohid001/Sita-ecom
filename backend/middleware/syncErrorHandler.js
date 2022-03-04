@@ -7,7 +7,7 @@ errorHandler = (err, req, res, next) => {
   // console.log("tohid", err.code);
   // console.log("GlobalError", err.message);
   console.log("syncerrorHandler");
-  console.log(err.message);
+  // console.log(err.message);
 
   //wrong mongodb _id error
   if (err.name === "CastError") {
