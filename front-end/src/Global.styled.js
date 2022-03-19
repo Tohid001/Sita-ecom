@@ -11,6 +11,9 @@ export const GlobalReset = createGlobalStyle`
   scroll-behavior:smooth;
   
 }
+html{
+  /* overflow:hidden; */
+}
 
 /* html,body{height:100%} */
 
@@ -23,12 +26,12 @@ export const GlobalReset = createGlobalStyle`
 &:root{--header:#081621;
 --iconActiveColor:rgb(235, 52, 131);
 --vh:${(props) => {
-  console.log(props.vh);
+  console.log("vh", props.vh);
   return props.vh;
 }};
 --bottomBarClearance:${(props) => {
-  console.log(props.bottomBarClearance);
-  return props.bottomBarClearance;
+  console.log("clearance", `${props.bottomBarClearance}px`);
+  return `${props.bottomBarClearance}px`;
 }};};
 
 
