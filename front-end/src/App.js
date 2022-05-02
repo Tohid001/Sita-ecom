@@ -1,6 +1,6 @@
 // import React, { useEffect } from "react";
 // import { Routes, Route } from "react-router-dom";
-// import GlobalStyles from "./GlobalStyles";
+
 // import Home from "./pages/Home.js";
 
 // function App() {
@@ -19,10 +19,16 @@
 // export default App;
 
 import React from "react";
-import Header from "./Containers/header/Header.jsx";
+import GlobalStyles from "./GlobalStyles";
+import { Footer, Header } from "./Containers";
 
 function App() {
-  return <Header></Header>;
+  return (
+    <>
+      <GlobalStyles /> <Header></Header>
+      <Footer></Footer>
+    </>
+  );
 }
 
 export default App;

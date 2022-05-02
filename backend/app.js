@@ -30,3 +30,7 @@ app.use((req, res, next) => {
 app.use(syncErrorHandler);
 
 module.exports = { app };
+
+app.set("case sensitive routing", "hello");
+
+console.log("hello", app.get("case sensitive routing"));
